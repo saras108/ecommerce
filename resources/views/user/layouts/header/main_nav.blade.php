@@ -26,35 +26,12 @@
                     </div>
                 </div>
                 <div class="col-md-2 machart">
-                    <button id="popcart" class="btn btn-default btn-chart btn-sm "><span class="mychart">Cart</span>|<span class="allprice">$0.00</span></button>
-                    <div class="popcart">
-                        <table class="table table-condensed popcart-inner">
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <a href="#"><img src="buy_tshirt/client/images/dummy-1.png" alt="" class="img-responsive"/></a>
-                                </td>
-                                <td><a href="#">Casio Exilim Zoom</a><br/><span>Color: green</span></td>
-                                <td>1X</td>
-                                <td>$138.80</td>
-                                <td><a href="#"><i class="fa fa-times-circle fa-2x"></i></a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <span class="sub-tot">Sub-Total : <span>$277.60</span> | <span>Vat (17.5%)</span> : $36.00 </span>
-                        <br/>
-                        <div class="btn-popcart">
-                            <a href="{{route('check_out')}}" class="btn btn-default btn-red btn-sm">Checkout</a>
-                            <a href="{{route('cart')}}" class="btn btn-default btn-red btn-sm">More</a>
-                        </div>
-                        <div class="popcart-tot">
-                            <p>
-                                Total<br/>
-                                <span>$313.60</span>
-                            </p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+                    <button class="btn btn-default btn-chart btn-sm ">
+                        <span class="mychart"><a href="{{route('cart')}}">MY Chart</a></span>
+                        <span class="badge" style="font-weight: 200; background-color: #2b788d;">{{Session::has('cart') ? Session::get('cart')->quantity : ''}}</span>
+                        |
+                        <span class="allprice">Nrs.{{Session::has('cart') ? Session::get('cart')->totalPrice : ''}}</span>
+                    </button>
                 </div>
             </div>
         </div>

@@ -23,9 +23,9 @@
                             <span class="smalltitle"><a href="#">{{$item->print}}</a></span>
 
                             @if($item->status == 0)
-                            <a href="#" class="btn btn-success"><i class="fa fa-shopping-cart"></i><i class="fa fa-warning" style="color: red;"></i></a>
+                            <a href="{{route('add_to_cart',$item->id)}}" class="btn btn-success"><i class="fa fa-shopping-cart"></i><i class="fa fa-warning" style="color: red;"></i></a>
                             @else
-                            <a href="#" class="btn btn-success"><i class="fa fa-shopping-cart"></i></a>
+                            <a href="{{route('add_to_cart',$item->id)}}" class="btn btn-success"><i class="fa fa-shopping-cart"></i></a>
                             @endif
 
                             <a href="#" class="btn btn-danger"><i class="fa fa-heart"></i></a>
@@ -50,7 +50,7 @@
     </div>
 
      
-
+ 
     <div class="f-widget featpro">
         <div class="container">
             <div class="title-widget-bg">

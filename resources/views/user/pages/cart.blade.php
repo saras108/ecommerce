@@ -2,6 +2,8 @@
 
 @section('content')
     @php $sum = 0; @endphp
+    <form method="get" action="{{route('check_out')}}">
+        {{csrf_field()}}
     <div class="container">
         <div class="title-bg">
             <div class="title">Shopping Cart</div>
@@ -10,67 +12,62 @@
         <div class="table-responsive">
             <table class="table table-bordered chart">
                 <thead>
+                    @if($products)
                 <tr>
                     <th>Brand</th>
                     <th>Color</th>
                     <th>Print</th>
                     <th>Action</th>
                     <th>Number</th>
-                    <th>Unit Price</th>
+                    <th>Unit Price (Nrs.)</th>
                     <th>Total Price</th>
 
                 </tr>
+                @endif
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Some Camera</td>
-                    <td>PR - 2</td>
-                    <td>225883</td>
+                    @if($products)
+                    @foreach($products as $product)
+                <tr> 
+                    <td>
+                        <input type="hidden" name="brand_name[]" value="{{$product['items']['brand_name']}}">{{$product['items']['brand_name']}}
+                    </td>
+                    <td>
+                        <input type="hidden" name="color[]" value="{{$product['items']['color']}}">{{$product['items']['color']}}
+                    </td>
+                    <td>
+                        <input type="hidden" name="print[]" value="{{$product['items']['print']}}">{{$product['items']['print']}}
+                    </td>
                     <td>
                         <a href="#">
-                            <i class="fa fa-edit btn btn-primary" style="color: white;"></i>
+                            <i class="btn btn-success" style="color: white;">+1</i>
+                        </a>
+                        <a href="#">
+                            <i class="btn btn-warning" style="color: white;">-1</i>
                         </a>
                         <a href="#">
                             <i class="fa fa-trash-o btn btn-danger" style="color: white;"></i>
                         </a>
                     </td>
-                    <td class="number">11</td>
-                    <td class="cost">$94.00</td>
+                    <td class="number">
+                        <input type="hidden" name="qty[]" value="{{$product['qty']}}">{{$product['qty']}}
+                    </td>
+                    <td class="cost">
+                        <input type="hidden" name="cost[]" value="{{$product['items']['cost']}}">{{$product['items']['cost']}}
+                    </td>
                     <td class="sub_total">
-                        @php $minor_sum = (11*11);@endphp
-                        {{$minor_sum}}
-                        @php $sum = $sum+ $minor_sum; @endphp
-
+                        <input type="hidden" name="price[]" value="{{$product['price']}}">{{$product['price']}}
                     </td>
-
-
                 </tr>
-                <tr>
-                    <td>Some Camera</td>
-                    <td>PR - 2</td>
-                    <td>225883</td>
-                    <td>
-                        <a href="#">
-                            <i class="fa fa-edit btn btn-primary" style="color: white;"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-trash-o btn btn-danger" style="color: white;"></i>
-                        </a>
-                    </td>
-                    <td class="number">11</td>
-                    <td class="cost">$94.00</td>
-                    <td class="sub_total">
-                        @php $minor_sum = (11*11);@endphp
-                        {{$minor_sum}}
-                        @php $sum = $sum+ $minor_sum; @endphp
 
-                    </td>
-
-                </tr>
+                @endforeach
+                @else
+                <h1>No Products in the cart.</h1>
+                @endif
                 </tbody>
             </table>
         </div>
-        <div class="row">
+        <dir></dir class="row">
             <div class="col-md-9">
 
                 <div class="page-title-wrap" style="margin-top: 0%">
@@ -93,27 +90,30 @@
                     </div>
                 </div>
             </div>
+
+             @if($products)
             <div class="col-md-3">
                 <div class="subtotal-wrap">
                     <div class="subtotal">
                         @php
-                            $vat = 13/100*$sum;
-                            $total_amt = $sum + $vat;
-                            $sipping =  $total_amt*11/100;
-                            $total_cost = $sum + $vat + $sipping;
+                            $vat = 13/100*$totalPrice;
+                            $total_cost = $totalPrice + $vat;
                         @endphp
-                        <p>Sum Total : {{$sum}}</p>
+                        <p>Cost : Nrs. {{$totalPrice}}</p>
                         <p>Vat 13% : {{$vat}}</p>
-                        @if($total_amt <  999)
-                            <p>Sipping : {{$sipping}}</p>
-                        @endif
                     </div>
-                    <div class="total">Total : <span class="bigprice">${{$total_cost}}</span></div>
-                    <a href="{{route('check_out')}}" class="btn btn-default btn-red">Check Out for Now</a>
+                    <input type="hidden" name="total" value="{{$totalPrice}}">
+                    <input type="hidden" name="vat" value="{{$vat}}">
+                    <input type="hidden" name="sumtotal" value="{{$total_cost}}">
+                    <div class="total">Total : <span class="bigprice">Nrs. {{$total_cost}}</span></div>
+                    <button class="btn btn-default btn-red" type="submit">  <a style="color: white;" >Check Out for Now</a> </button>
+                   
                 </div>
                 <div class="clearfix"></div>
             </div>
+            @endif()
         </div>
+    </form>
         <div class="spacer"></div>
     </div>
 

@@ -35,7 +35,6 @@
 <div id="wrapper">
 @include('user.layouts.header.top_header')
 @include('user.layouts.header.main_nav')
-@include('user.layouts.header.lower_nav')
 
 @yield('content')
 

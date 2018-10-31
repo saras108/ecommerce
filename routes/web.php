@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
+Route::get('/home', 'ClientController@index')->name('home');
 
 Route::get('/', ['as' => 'home', 'uses' => 'ClientController@index']);
 
@@ -21,7 +24,7 @@ Route::get('cost/{data}', ['as' => 'cost', 'uses' => 'ClientController@cost']);
 
 Route::get('color/{data}', ['as' => 'color', 'uses' => 'ClientController@color']);
 
-Route::get('checkout', ['as' => 'check_out', 'uses' => 'ClientController@checkout']);
+Route::post('submit', ['as' => 'submit', 'uses' => 'ClientController@submit']);
 
 Route::get('cart', ['as' => 'cart', 'uses' => 'ClientController@cart']);
 
@@ -32,6 +35,34 @@ Route::get('mission', ['as' => 'mission', 'uses' => 'ClientController@mission'])
 Route::get('brand', ['as' => 'brand', 'uses' => 'ClientController@brand']);
 
 Route::get('policy', ['as' => 'policy', 'uses' => 'ClientController@policy']);
+
+Route::get('add_to_cart/{id}', ['as' => 'add_to_cart', 'uses' => 'ClientController@getAddToCart']);
+
+Route::get('moveon', ['as' => 'check_out', 'uses' => 'ClientController@moveon']);
+
+Route::post('buy_items', ['as' => 'buy_items', 'uses' => 'ClientController@store']);
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Facebook Sociallite
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider')->name('fb_login');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
+/*
+|--------------------------------------------------------------------------
+| Google Sociallite
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::get('login/google', 'Auth\LoginController@redirectToProviderGoogle')->name('google_login');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallbackGoogle');
 
 
 
@@ -313,3 +344,7 @@ Route::get('verify/{email}/{verifyToken}','Owner\LoginController@emailSentOwner'
 
 
 });
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
