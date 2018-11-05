@@ -32,6 +32,14 @@
                     <td>
                         <input type="hidden" name="brand_name[]" value="{{$product['items']['brand_name']}}">{{$product['items']['brand_name']}}
                     </td>
+
+
+                   
+                        <input type="hidden" name="store_id[]" value="{{$product['items']['store_id']}}">
+                        <input type="hidden" name="size[]" value="{{$product['items']['size']}}">
+                        <input type="hidden" name="product_id[]" value="{{$product['items']['id']}}">
+                
+
                     <td>
                         <input type="hidden" name="color[]" value="{{$product['items']['color']}}">{{$product['items']['color']}}
                     </td>

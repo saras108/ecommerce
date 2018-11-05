@@ -7,8 +7,7 @@
 
      <div class="container">
         <div class="row">
-
-                        <div class="col-md-12 al-cus">
+            <div class="col-md-12 al-cus">
                 <div class="title-bg"> 
                     <div class="title">New Customer</div>
                 </div>
@@ -17,23 +16,17 @@
                     <p>
                         I want to be the member.
                     </p>
-
-
-
-
                        @if ($errors->any())
 
-
         <div class="row" style="padding-bottom: 20px;">
-          
             <div class="col-md-8" style="background-color: #ef807b;">
                  @foreach ($errors->all() as $error)
-                                    <p style="color: white; text-align: center; padding-top: 7px;">{{ $error }}</p>
-                                @endforeach
+                    <p style="color: white; text-align: center; padding-top: 7px;">{{ $error }}</p>
+                @endforeach
                             
             </div>
         </div>
-                        @endif
+@endif
 
 
                     <div class="row">
@@ -106,29 +99,50 @@
                 <div class="title-bg">
                     <div class="title">Guest CheckOut</div>
                 </div>
-                <form role="form">
+                <form method="post" action="{{route('buy_items')}}">
+
+                    {{csrf_field()}}
+
+             @if ($errors->any())
+
+
+        <div class="row" style="padding-bottom: 20px;">
+          
+            <div class="col-md-8" style="background-color: #ef807b;">
+                 @foreach ($errors->all() as $error)
+                                    <p style="color: white; text-align: center; padding-top: 7px;">{{ $error }}</p>
+                                @endforeach
+                            
+            </div>
+        </div>
+                        @endif
                     <p>
                         By creating an account you will be able to shop faster, and somehow cheaper then in guest mode.
                     </p>
 
+                    <input type="hidden" name="items" value="{{$items}}">
+                    <input type="hidden" name="total" value="{{$total}}">
+                    <input type="hidden" name="vat" value="{{$vat}}">
+                    <input type="hidden" name="sumtotal" value="{{$sumtotal}}">
+
                         <div class="row">
                             <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="exampleInput" placeholder="Contact Number">
+                                <input type="text" name="name" class="form-control" id="exampleInput" placeholder="Name">
                             </div>
                             </div>
                             <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="exampleInput" placeholder="Email Address">
+                                <input type="text" name="contact_number" class="form-control" id="exampleInput" placeholder="Contact Number">
                             </div>
                             </div>
                             <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="exampleInput" placeholder="Dropping Location">
+                                <input type="text" name="address" class="form-control" id="exampleInput" placeholder="Dropping Location">
                             </div>
                             </div>
                         </div>
-                    <button class="btn btn-default btn-red">Proceed</button>
+                    <button class="btn btn-default btn-red" type="submit">Proceed</button>
                 </form>
             </div>
 

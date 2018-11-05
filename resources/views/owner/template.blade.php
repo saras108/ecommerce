@@ -129,6 +129,51 @@
                     </li>
 
 
+
+
+                    <li class="has-sub">
+                      <a class="js-arrow" href="#">
+                        <i class="fa fa-users"></i>Brought Items
+                        <span class="arrow">
+                          <i class="fas fa-angle-down"></i>
+                        </span>
+                      </a>
+                      <ul class="list-unstyled navbar__sub-list js-sub-list">
+
+                        <li>
+                          <a href="{{route('brought.list.items.work_on')}}">
+                            <i class="fa fa-genderless"></i> Work On
+                          </a>
+                        </li>
+
+                        <li>
+                          <a href="{{route('owner.new.stores')}}">
+                            <i class="fa fa-genderless"></i> On Hold
+                          </a>
+                        </li>
+
+                        <li>
+                          <a href="{{route('owner.new.stores')}}">
+                            <i class="fa fa-genderless"></i> Processing
+                          </a>
+                        </li>
+
+                        <li>
+                          <a href="{{route('owner.registered.stores')}}">
+                            <i class="fa fa-genderless"></i> Completed
+                          </a>
+                        </li>
+
+                        <li>
+                          <a href="{{route('owner.deleted.stores')}}">
+                            <i class="fa fa-genderless"></i> Fraud
+                          </a>
+                        </li>
+
+                        </ul>
+                    </li>
+
+
                 </ul>
             </nav>
         </div>

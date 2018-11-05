@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Store;
 use App\OwnerList;
 use App\Owner;
+use App\BroughtItem;
 use File;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -319,8 +320,6 @@ class OwnerController extends Controller
 |
 */
 
-
-
     /**
      * List Owner.
      *
@@ -573,6 +572,43 @@ class OwnerController extends Controller
     public function emailSentOwner($thisOwner)
     {
         Mail::to($thisOwner['email'])->send(new OwnerRegistered($thisOwner));
+    }
+
+
+/*
+|--------------------------------------------------------------------------
+| Brought Items
+|--------------------------------------------------------------------------
+|
+| List of Brought Items and their information.
+|
+*/
+
+
+
+    /**
+     * To Be Worked On
+     *
+    */
+
+    public function list_workon()
+    {
+        $owner = BroughtItem::all();
+        // dd($owner);
+        return view('owner.broughtitems.toWorkOn',compact('owner'));
+    }
+
+
+    /**
+     * Orderd items of selected User.
+     *
+    */
+
+    public function orderd($id)
+    {
+        $o = BroughtItem::where('id', $id)->first();
+        $item = json_decode($o->items);
+        return view('owner.broughtitems.orderedItems',compact('o' , 'item'));
     }
 
 

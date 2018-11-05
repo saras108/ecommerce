@@ -10,6 +10,7 @@ use App\User;
 use App\BroughtItem;
 use DB;
 use Session;
+use Auth;
 
 class ClientController extends Controller
 {
@@ -93,6 +94,7 @@ class ClientController extends Controller
 
         $oldcart = Session::get('cart');
         $cart = new Cart($oldcart);
+         // dd($cart);
         return view('user.pages.cart', ['products' => $cart->items , 'totalPrice' => $cart->totalPrice]);
     }
 
@@ -128,7 +130,7 @@ class ClientController extends Controller
          // dd($oldcart);
 
         $cart = new Cart($oldcart);
-        // dd($cart);
+     // dd($cart);
         $cart->add($item , $item->id);
 
         $request->session()->put('cart', $cart);
@@ -145,14 +147,19 @@ class ClientController extends Controller
      */
     public function moveon(Request $request)
     {
-        // dd($request);
+         // dd($request);
         $items = array(
             'brand_name'=> $request->brand_name,
             'color'=> $request->color,
             'print'=> $request->print,
             'qty'=> $request->qty,
             'cost'=> $request->cost,
+            'store_id'=>$request->store_id,
+            'product_id'=>$request->product_id,
+            'size'=>$request->size,
         );
+
+        // dd($items);
         $items = json_encode($items);
         $total = $request->total;
         $vat = $request->vat;
@@ -165,19 +172,63 @@ class ClientController extends Controller
 
     public function store(Request $request)
     {
-        $items = $request->validate([
-            'items' => 'required',
-            'total' => 'required',
-            'vat' => 'required',
-            'sumtotal' => 'required',
-            'contact_number' => 'required',
-            'address' => 'required',
-        ]);
 
-        $buy = new BroughtItem;
+        if(Auth::user()){
 
-        // $buy->name = 
-        // return view('user.pages.checkout');
+           $items = $request->validate([
+                'items' => 'required',
+                'total' => 'required',
+                'vat' => 'required',
+                'sumtotal' => 'required',
+                'contact_number' => 'required',
+                'address' => 'required',
+            ]);
+
+            $buy = new BroughtItem;
+
+            $buy->name = Auth::user()->name;
+            $buy->email = Auth::user()->email;
+            $buy->items = $request->items;
+            $buy->total = $request->total;
+            $buy->vat = $request->vat;
+            $buy->sumtotal = $request->sumtotal;
+            $buy->contact_number = $request->contact_number;
+            $buy->address = $request->address;
+
+            $buy->save();
+
+        }else{
+
+              $items = $request->validate([
+                'items' => 'required',
+                'total' => 'required',
+                'vat' => 'required',
+                'sumtotal' => 'required',
+                'contact_number' => 'required',
+                'address' => 'required',
+                'name'=> 'required',
+            ]);
+
+            $buy = new BroughtItem;
+
+            $buy->name = $request->name;
+            $buy->email = 'guest check_out';
+            $buy->items = $request->items;
+            $buy->total = $request->total;
+            $buy->vat = $request->vat;
+            $buy->sumtotal = $request->sumtotal;
+            $buy->contact_number = $request->contact_number;
+            $buy->address = $request->address;
+
+            $buy->save();
+
+        }
+
+        session::forget('cart');
+ 
+        $items = Item::where('display', 1)->inRandomOrder()->get();
+        
+        return view('user.index', compact('items'));
     }
 
     /**

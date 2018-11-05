@@ -286,6 +286,39 @@ Route::post('owners/group_delete', 'OwnerController@owner_group_delete')->name('
 
 
 
+/*
+|--------------------------------------------------------------------------
+| Brought Items
+|--------------------------------------------------------------------------
+|
+| List the Brought Items and their information
+|
+*/
+
+Route::get('/items/pending', 'OwnerController@list_workon')->name('brought.list.items.work_on');
+
+Route::get('items/orderd/{id}', 'OwnerController@orderd')->name('brought.items.orderd');
+
+Route::get('owners/deleted', 'OwnerController@owner_deleted')->name('owner.deleted.owners');
+	
+Route::get('/owners/new', 'OwnerController@newowner')->name('owner.new.owners');
+
+Route::post('/owners/save', 'OwnerController@saveowner')->name('owner.save.owners');
+
+Route::post('/owners/update', 'OwnerController@updateowner')->name('owner.update.owners');
+
+Route::get('/owners/edit/{id}', 'OwnerController@editowner')->name('owner.edit.owners');
+
+Route::get('owners/delete/{id}', 'OwnerController@deleteowner')->name('owner.owners.delete.confirm');
+
+Route::get('owners/profession/{id}', 'OwnerController@owner_profession')->name('owner.profession.owners');
+
+Route::post('owners/activate', 'OwnerController@owner_activate')->name('owner.activate.owners');
+
+Route::post('owners/deactivate', 'OwnerController@owner_deactivate')->name('owner.deactivate.owners');
+
+Route::post('owners/group_delete', 'OwnerController@owner_group_delete')->name('owner.group_delete.owners');
+
 });
 
 Route::group(['prefix'=>'owner', 'middleware'=>'web'], function(){
