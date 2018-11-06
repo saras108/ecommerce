@@ -10,6 +10,7 @@ use App\Store;
 use App\OwnerList;
 use App\Owner;
 use App\BroughtItem;
+use App\Fraud;
 use File;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -593,8 +594,9 @@ class OwnerController extends Controller
 
     public function list_workon()
     {
-        $owner = BroughtItem::all();
-        // dd($owner);
+        $owner = DB::table('brought_items')
+            ->join('frauds', 'frauds.brought_item_id', '!=', 'brought_items.id')
+            ->get();
         return view('owner.broughtitems.toWorkOn',compact('owner'));
     }
 
@@ -609,6 +611,28 @@ class OwnerController extends Controller
         $o = BroughtItem::where('id', $id)->first();
         $item = json_decode($o->items);
         return view('owner.broughtitems.orderedItems',compact('o' , 'item'));
+    }
+
+
+    /**
+     * Orderd items of which are fraud
+     *
+    */
+
+    public function fraud($id)
+    {
+        // $items = DB::table('brought_items')
+        //     ->leftJoin('users', 'brought_items.email', '=', 'users.email' )
+        //     ->where(['brought_items.id' => $id])
+        //     ->first();
+
+        $fraud = new Fraud();
+
+        $fraud->brought_item_id = $id;
+
+        $fraud->save();
+
+        return Redirect::back()->with('success', 'Selected Itemes Set as Fraud');
     }
 
 

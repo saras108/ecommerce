@@ -352,9 +352,11 @@ class ComposerStaticInitd138c212d4ae085596e04e6f9983471d
 
     public static $classMap = array (
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
+        'App\\BroughtItem' => __DIR__ . '/../..' . '/app/BroughtItem.php',
         'App\\Cart' => __DIR__ . '/../..' . '/app/Cart.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Fraud' => __DIR__ . '/../..' . '/app/Fraud.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Admin\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/LoginController.php',
         'App\\Http\\Controllers\\Admin\\PasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PasswordController.php',
@@ -384,6 +386,7 @@ class ComposerStaticInitd138c212d4ae085596e04e6f9983471d
         'App\\Notifications\\OwnerPasswordReset' => __DIR__ . '/../..' . '/app/Notifications/OwnerPasswordReset.php',
         'App\\Owner' => __DIR__ . '/../..' . '/app/Owner.php',
         'App\\OwnerList' => __DIR__ . '/../..' . '/app/OwnerList.php',
+        'App\\ProductDetail' => __DIR__ . '/../..' . '/app/ProductDetail.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -391,7 +394,6 @@ class ComposerStaticInitd138c212d4ae085596e04e6f9983471d
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Store' => __DIR__ . '/../..' . '/app/Store.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
-        'App\\broughtItem' => __DIR__ . '/../..' . '/app/broughtItem.php',
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',

@@ -103,13 +103,9 @@
                                         <th class="th-sm">Action
                                             <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                         </th>
-                                        <th class="th-sm">View Items
-                                            <i class="fa fa-sort float-right" aria-hidden="true"></i>
-                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $confirm_route = '#';  ?>
                                         @foreach($owner as $o)
                                             <tr>
                                                 <input type="hidden" name="getid" value="{{$o->id}}">
@@ -126,20 +122,13 @@
                                                     <button type="button" class="badge badge-info">Hold On</button>
                                                 </td>
                                                 <td>
-                                                   <a href="#" style="color: white;" type="button" class="badge badge-warning">Start Processing</a>
-
-                                                   <a href="#" style="color: white;" type="button" class="badge badge-danger">Fraud Booking</a>
-
-                                                    </td>
-                                                <td>
-                                                   <a href="{{route('brought.items.orderd',$o->id)}}" style="color: white;" type="button" class="badge badge-success">View Items</a>
-
-                                                    </td>
-                                                            
+                                                   <a href="{{route('brought.items.orderd',$o->id)}}" style="color: white;" type="button" class="badge badge-warning">About Items</a>
+                                                
+                                                   <a href="{{route('brought.items.fraud',$o->id)}}" style="color: white;" type="button" class="badge badge-danger">Fraud Booking</a>
                                                 </td>
                                             </tr>
                                         @endforeach()
-                                    </tbody>
+                                    </tbody>    
                                    <!--  <tfoot>
                                     <tr>
                                         <th></th>
@@ -176,29 +165,6 @@
         </div>
     </div>
 @endsection
-
-    <div class="modal fade" id="delete_content" tabindex="-1" role="dialog" aria-labelledby="delete_custom" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="user_delete_confirm_title">Confirm Delete</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    Are you sure you want to delete this Owner?
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <a href="{{route('owner.edit.owners',$o->id)}}" type="button" class="btn btn-danger">Delete</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 
 @section('header-scripts')

@@ -135,7 +135,7 @@
                                                 <td>
                                                 <a href="{{route('owner.profession.owners',$o->id)}}" style="color: white;" type="button" class="badge badge-success">Notified</a></td>
                                                 <td>
-                                                <a href="{{route('owner.profession.owners',$o->id)}}" style="color: white;" type="button" class="badge badge-success">Notified</a></td>
+                                                <a href="{{route('owner.profession.owners',$o->id)}}" style="color: white;" type="button" class="badge badge-success">On Hold</a></td>
                                               
                                             </tr>
                                               @endfor()

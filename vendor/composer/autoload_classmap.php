@@ -7,9 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Admin' => $baseDir . '/app/Admin.php',
+    'App\\BroughtItem' => $baseDir . '/app/BroughtItem.php',
     'App\\Cart' => $baseDir . '/app/Cart.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Fraud' => $baseDir . '/app/Fraud.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
     'App\\Http\\Controllers\\Admin\\LoginController' => $baseDir . '/app/Http/Controllers/Admin/LoginController.php',
     'App\\Http\\Controllers\\Admin\\PasswordController' => $baseDir . '/app/Http/Controllers/Admin/PasswordController.php',
@@ -39,6 +41,7 @@ return array(
     'App\\Notifications\\OwnerPasswordReset' => $baseDir . '/app/Notifications/OwnerPasswordReset.php',
     'App\\Owner' => $baseDir . '/app/Owner.php',
     'App\\OwnerList' => $baseDir . '/app/OwnerList.php',
+    'App\\ProductDetail' => $baseDir . '/app/ProductDetail.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
@@ -46,7 +49,6 @@ return array(
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Store' => $baseDir . '/app/Store.php',
     'App\\User' => $baseDir . '/app/User.php',
-    'App\\broughtItem' => $baseDir . '/app/broughtItem.php',
     'ArithmeticError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
     'AssertionError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',

@@ -16,18 +16,18 @@
                         </li>
                         <li><a href="#"> Cost</a>
                             <ul>
-                                <li><a class="cost" href="#" value="< 500">Below 500)</a></li>
-                                <li><a class="cost" href="#" value="1000 > 500">Range (500-1000) </a></li>
-                                <li><a class="cost" href="#" value=">1000">Above 1000</a></li>
+                                <li><a class="cost" href="#" value="below500">Below 500)</a></li>
+                                <li><a class="cost" href="#" value="500to1000">Range (500-1000) </a></li>
+                                <li><a class="cost" href="#" value=">1000above">Above 1000</a></li>
                             </ul>
                         </li>
                         <li><a href="#"> Popular Available Color</a>
                             <ul>
-                                <li><a class="color" href="#">Black</a></li>
-                                <li><a class="color" href="#">White</a></li>
-                                <li><a class="color" href="#">Gray </a></li>
-                                <li><a class="color" href="#">Red</a></li>
-                                <li><a class="color" href="#">Navy</a></li>
+                                <li><a class="color" href="#" value="black">Black</a></li>
+                                <li><a class="color" href="#" value="white">White</a></li>
+                                <li><a class="color" href="#" value="gray">Gray </a></li>
+                                <li><a class="color" href="#" value="red">Red</a></li>
+                                <li><a class="color" href="#" value="navy">Navy</a></li>
                             </ul>
                         </li>
                         <li class="lastone"><a href="#">Offers</a></li>
@@ -40,20 +40,17 @@
 
                     $( ".size" ).click(function() {
                         $data = $(this).attr('value'); 
-                        alert($data);
-                         $(this).attr('href', '{{route("size",'$data')}}');
+                         $(this).attr('href', "{{ url('size') }}"+'/'+$data);
                     });
 
                     $( ".cost" ).click(function() {
                         $data = $(this).attr('value'); 
-                        alert($data);
-                         $(this).attr('href', '{{route("cost",'$data')}}');
+                         $(this).attr('href',"{{ url('cost') }}"+'/'+$data);
                     });
 
                     $( ".color" ).click(function() {
                         $data = $(this).attr('value'); 
-                        alert($data);
-                         $(this).attr('href', '{{route("color",'$data')}}');
+                         $(this).attr('href', "{{ url('color') }}"+'/'+$data);
                     });
 
                 });

@@ -299,7 +299,7 @@ Route::get('/items/pending', 'OwnerController@list_workon')->name('brought.list.
 
 Route::get('items/orderd/{id}', 'OwnerController@orderd')->name('brought.items.orderd');
 
-Route::get('owners/deleted', 'OwnerController@owner_deleted')->name('owner.deleted.owners');
+Route::get('items/fraud/{id}', 'OwnerController@fraud')->name('brought.items.fraud');
 	
 Route::get('/owners/new', 'OwnerController@newowner')->name('owner.new.owners');
 

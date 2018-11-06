@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BroughtItem extends Model
+class Fraud extends Model
 {
     protected $dates = [
     'created_at',
